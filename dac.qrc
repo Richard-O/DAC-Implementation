@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="file-locked.png">res/images/secure-file.png</file>
+        <file alias="file-read.png">res/images/text-file.png</file>
+        <file alias="file-read-write.png">res/images/writting-file.png</file>
+        <file alias="new-file.png">res/images/add-page.png</file>
+    </qresource>
+</RCC>
