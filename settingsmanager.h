@@ -11,7 +11,7 @@
 #include "user.h"
 
 
-#define COMPANY_NAME "YUDO"
+#define COMPANY_NAME "CSC504"
 #define APP_NAME "DACImplementation"
 
 #define ACL_STRING "Access Control List"

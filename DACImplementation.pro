@@ -28,7 +28,8 @@ HEADERS  += filemanagerwindow.h \
     file.h
 
 FORMS    += filemanagerwindow.ui \
-    permissionsdialog.ui
+    permissionsdialog.ui \
+    new_user.ui
 
 RESOURCES += \
     dac.qrc

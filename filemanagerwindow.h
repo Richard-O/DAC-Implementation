@@ -2,6 +2,7 @@
 #define FILEMANAGERWINDOW_H
 
 #include "settingsmanager.h"
+#include "ui_new_user.h"
 #include <QMainWindow>
 #include <QComboBox>
 #include <QPushButton>
@@ -30,12 +31,15 @@ private:
     QPushButton *btnNewFile;
     QLineEdit *txtFileName;
     QVBoxLayout *mainLayout;
+    Ui::Dialog1 ui;
     void clearLayout(QLayout *layout);
+
 
 public slots:
     void loadFiles();
     void createUser();
     void createFile();
+    void saveUser();
 
 
 

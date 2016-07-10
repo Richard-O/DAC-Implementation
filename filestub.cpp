@@ -20,13 +20,13 @@ FileStub::FileStub(File *file, User *user, QWidget *parent)
 
     lblIcon = new QLabel();
     lblIcon->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-    lblIcon->setStyleSheet("QLabel { background-color : #fff5cc; color : white; qproperty-alignment: 'AlignCenter'}");
+    lblIcon->setStyleSheet("QLabel { background-color : #ffcb4d; color : white; qproperty-alignment: 'AlignCenter'}");
     lblIcon->setPixmap(iconPixmap);
 
     if (sm.getOwner(file->getPath()) == user->getUsername()){
         QLabel *tag = new QLabel(lblIcon);
         tag->setText("O");
-        tag->setStyleSheet("QLabel { background-color : #b35900; color : white; font: bold 12px Courier;}");
+        tag->setStyleSheet("QLabel { background-color : blue; color : white; font: bold 12px Courier;}");
         tag->setFixedSize(20, 20);
         tag->setWindowFlags(Qt::FramelessWindowHint);
      }

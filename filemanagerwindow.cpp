@@ -19,7 +19,8 @@ FileManagerWindow::FileManagerWindow(QWidget *parent) :
     QMainWindow(parent)
 {
 
-    this->setFixedSize(600, 480);
+
+    this->setFixedSize(620, 480);
     QWidget *centralWidget = new QWidget();
 
     mainLayout = new QVBoxLayout();
@@ -35,8 +36,11 @@ FileManagerWindow::FileManagerWindow(QWidget *parent) :
     }
 
     hlay->addWidget(cbUsers);
-    btnNewUser = new QPushButton("New User");
-    //hlay->addWidget(btnNewUser);
+    btnNewUser = new QPushButton();
+    QPixmap p1(":/images/new-user.png");
+    btnNewUser->setIcon(QIcon(p1));
+    btnNewUser->setFixedWidth(50);
+    hlay->addWidget(btnNewUser);
 
     hlay2->addStretch(1);
     txtFileName = new QLineEdit();
@@ -52,6 +56,8 @@ FileManagerWindow::FileManagerWindow(QWidget *parent) :
     mainLayout->addLayout(hlay2);
     loadFiles();
     centralWidget->setLayout(mainLayout);
+    centralWidget->setFixedSize(600, 480);
+
     qa->setWidget(centralWidget);
     this->setCentralWidget(qa);
 
@@ -62,12 +68,30 @@ FileManagerWindow::FileManagerWindow(QWidget *parent) :
 
 }
 
+void FileManagerWindow::saveUser(){
+
+    if (ui.txtuname->text() != ""){
+        User *user = new User(ui.txtuname->text());
+        user->setName(ui.txtname->text());
+        user->setPassword(ui.txtpass->text());
+        sm.saveUser(user);
+
+        cbUsers->clear();
+        QList<User*> users = sm.getAllUsers();
+        for (int i = 0; i < users.size(); i++){
+            User* user = users.at(i);
+            cbUsers->addItem(user->getUsername(), QVariant::fromValue(user));
+        }
+    }
+
+}
+
 void FileManagerWindow::createUser(){
 
-    User *user = new User("User 2");
-    sm.saveUser(user);
-
-
+    QDialog *widget = new QDialog;
+    ui.setupUi(widget);
+    connect(widget, SIGNAL(accepted()), this , SLOT(saveUser()));
+    widget->show();
 }
 
 void FileManagerWindow::createFile(){
